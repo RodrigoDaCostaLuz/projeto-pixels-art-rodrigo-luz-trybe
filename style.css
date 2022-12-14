@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  #title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #color-palette {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .color {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+  }
