@@ -1,10 +1,7 @@
 // Variáveis
 const pixelboard = document.getElementById('pixel-board');
 const coresDaPaleta = document.getElementsByClassName('color');
-coresDaPaleta[0].style.backgroundColor = 'black';
-coresDaPaleta[1].style.backgroundColor = 'yellow';
-coresDaPaleta[2].style.backgroundColor = 'red';
-coresDaPaleta[3].style.backgroundColor = 'green';
+const btnRandonColor = document.getElementById('button-random-color');
 // Funções
 function constroiTituloH1() {
   const geraH1 = document.createElement('h1');
@@ -14,30 +11,22 @@ function constroiTituloH1() {
   const pegaH1 = document.getElementById('title');
   pegaH1.innerHTML = 'Paleta de Cores';
 }
-
-// const savePaletta = () => {
-//   saveStagePaletta = [];
-//   for (let index = 0; index < coresDaPaleta.length; index += 1) {
-//     saveStagePaletta.push(coresDaPaleta[index].style.backgroundColor);
-//   }
-//   localStorage.setItem('colorPalette', JSON.stringify(saveStagePaletta));
-// };
-function btnrandonColor() {
-  const btnRandonColor = document.createElement('button');
-  document.body.appendChild(btnRandonColor);
-  btnRandonColor.id = 'button-random-color';
-  btnRandonColor.innerHTML = 'Cores aleatórias';
-
-  btnRandonColor.addEventListener('click', () => {
-    for (let index = 1; index < coresDaPaleta.length; index += 1) {
-      const r = Math.floor(Math.random() * 255).toString(10);
-      const g = Math.floor(Math.random() * 255).toString(10);
-      const b = Math.floor(Math.random() * 255).toString(10);
-      const coresRGB = `rgb(${r},${g},${b})`;
-      coresDaPaleta[index].style.backgroundColor = coresRGB;
-    }
-  });
-}
+// Paleta de Cores
+coresDaPaleta[0].style.backgroundColor = 'black';
+coresDaPaleta[1].style.backgroundColor = 'yellow';
+coresDaPaleta[2].style.backgroundColor = 'red';
+coresDaPaleta[3].style.backgroundColor = 'green';
+// Gera cores aleatórias na paleta
+const geraCoresAleatorias = btnRandonColor.addEventListener('click', () => {
+  for (let index = 1; index < coresDaPaleta.length; index += 1) {
+    const r = Math.floor(Math.random() * 255).toString(10);
+    const g = Math.floor(Math.random() * 255).toString(10);
+    const b = Math.floor(Math.random() * 255).toString(10);
+    const coresRGB = `rgb(${r},${g},${b})`;
+    coresDaPaleta[index].style.backgroundColor = coresRGB;
+  }
+});
+// Gera quadrado de pixels
 const squarePixel = (value) => {
   for (let i = 1; i <= value; i += 1) {
     const pixels = document.createElement('pixel');
@@ -57,37 +46,8 @@ for (let i = 0; i < coresDaPaleta.length; i += 1) {
     cor.target.classList.add('selected');
   });
 }
-
-const corSelected = () => {
-  for (let index = 0; index < coresDaPaleta.length; index += 1) {
-    coresDaPaleta[index].addEventListener('click', () => {
-      for (let ind = 0; ind < coresDaPaleta.length; ind += 1) {
-        coresDaPaleta[ind].classList.remove('selected');
-      }
-      coresDaPaleta[index].classList.add = 'selected';
-      coresDaPaleta[index].classList.toggle('selected');
-    });
-  }
-  localStorage.setItem('corSelcted', JSON.stringify(corSelected));
-};
-corSelected();
-
-function pixelToColor() {
-  const tdPixel = document.querySelectorAll('.pixel');
-
-  for (let index = 0; index < tdPixel.length; index += 1) {
-    tdPixel[index].addEventListener('click', (evento) => {
-      const selectedColor = document.querySelector('.selected');
-      const color = selectedColor.getAttribute('style');
-      console.log(color);
-      evento.target.setAttribute('style', color);
-    });
-  }
-  localStorage.setItem('pixelToColor', JSON.stringify(pixelToColor));
-}
-pixelToColor();
 // Executa funções
 window.onload = () => {
   constroiTituloH1();
-  btnrandonColor();
+  geraCoresAleatorias();
 };

@@ -5,7 +5,7 @@
 }
 
 body {
-  text-align: center
+  text-align: center;
 }
 
 #title {
@@ -30,6 +30,30 @@ body {
   border-width: 1px;
   border-color: black;
   border-style: solid;
+}
+
+.botaos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#button-random-color {
+  display: inline;
+  cursor: pointer;
+  position: relative;
+}
+
+#clear-board {
+  display: inline;
+  cursor: pointer;
+  position: relative;
+}
+
+#board-size {
+  width: 50px;
+  margin-top: 5px;
 }
 
 #div-container {
