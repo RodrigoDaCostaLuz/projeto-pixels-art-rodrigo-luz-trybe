@@ -1,8 +1,7 @@
-// Variáveis
 const pixelboard = document.getElementById('pixel-board');
 const coresDaPaleta = document.getElementsByClassName('color');
 const btnRandonColor = document.getElementById('button-random-color');
-// Funções
+
 function constroiTituloH1() {
   const geraH1 = document.createElement('h1');
   const pegaHeader = document.querySelector('header');
@@ -11,12 +10,10 @@ function constroiTituloH1() {
   const pegaH1 = document.getElementById('title');
   pegaH1.innerHTML = 'Paleta de Cores';
 }
-// Paleta de Cores
 coresDaPaleta[0].style.backgroundColor = 'black';
 coresDaPaleta[1].style.backgroundColor = 'yellow';
 coresDaPaleta[2].style.backgroundColor = 'red';
 coresDaPaleta[3].style.backgroundColor = 'green';
-// Gera cores aleatórias na paleta
 const geraCoresAleatorias = btnRandonColor.addEventListener('click', () => {
   for (let index = 1; index < coresDaPaleta.length; index += 1) {
     const r = Math.floor(Math.random() * 255).toString(10);
@@ -26,7 +23,6 @@ const geraCoresAleatorias = btnRandonColor.addEventListener('click', () => {
     coresDaPaleta[index].style.backgroundColor = coresRGB;
   }
 });
-// Gera quadrado de pixels
 const squarePixel = (value) => {
   for (let i = 1; i <= value; i += 1) {
     const pixels = document.createElement('pixel');
@@ -35,7 +31,6 @@ const squarePixel = (value) => {
   }
 };
 squarePixel(25);
-
 const removeselected = () => {
   for (let i = 0; i < coresDaPaleta.length; i += 1) {
     coresDaPaleta[i].addEventListener('click', (cor) => {
@@ -71,10 +66,8 @@ function pixelToColor() {
       evento.target.setAttribute('style', color);
     });
   }
-  localStorage.setItem('pixelToColor', JSON.stringify(pixelToColor));
 }
 pixelToColor();
-// requisito 11
 function clearboard() {
   const btnClearBoard = document.getElementById('clear-board');
   btnClearBoard.addEventListener('click', () => {
@@ -90,49 +83,16 @@ const savePixelsBoard = () => {
   const pxBoard = [];
   for (let ind = 0; ind < squarePxs.length; ind += 1) {
     pxBoard.push(squarePxs[ind].style.backgroundColor);
-    localStorage.setItem('pixelBoard', JSON.stringify(pxBoard));
   }
 };
 
-const painting = () => {
+function painting() {
   for (let ind = 0; ind < squarePxs.length; ind += 1) {
     squarePxs[ind].addEventListener('click', savePixelsBoard);
   }
-};
+}
 painting();
-const savePainting = () => {
-  const pxBoard = JSON.parse(localStorage.getItem('pixelBoard'));
-  // const squarePxs = document.querySelectorAll('.pixel');
-  if (pxBoard !== null) {
-    for (let ind = 0; ind < squarePxs.length; ind += 1) {
-      squarePxs[ind].style.backgroundColor = pxBoard[ind];
-    }
-  }
-};
-savePainting();
 
-const saveBoardSize = () => {
-  const btnVQV = document.getElementById('generate-board');
-  const input = document.getElementById('board-size');
-  btnVQV.addEventListener('click', () => {
-    let sizeOfBoard = input.value;
-    if (sizeOfBoard === '') {
-      alert('Board inválido!');
-    }
-    if (sizeOfBoard < 5) {
-      sizeOfBoard = 5;
-    }
-    if (sizeOfBoard > 50) {
-      sizeOfBoard = 50;
-    }
-    localStorage.setItem('boardSize', sizeOfBoard);
-    console.log(input);
-  });
-};
-
-saveBoardSize();
-
-// Executa funções
 window.onload = () => {
   constroiTituloH1();
   geraCoresAleatorias();
