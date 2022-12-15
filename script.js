@@ -33,19 +33,8 @@ const squarePixel = (value) => {
     pixels.className = 'pixel';
     pixelboard.appendChild(pixels);
   }
-  localStorage.setItem('squarePx', JSON.stringify(squarePixel));
 };
 squarePixel(25);
-// requisito 8, 9 e 10
-for (let i = 0; i < coresDaPaleta.length; i += 1) {
-  coresDaPaleta[i].addEventListener('click', (cor) => {
-    coresDaPaleta[0].classList.remove('selected');
-    coresDaPaleta[1].classList.remove('selected');
-    coresDaPaleta[2].classList.remove('selected');
-    coresDaPaleta[3].classList.remove('selected');
-    cor.target.classList.add('selected');
-  });
-}
 // Executa funções
 window.onload = () => {
   constroiTituloH1();
