@@ -78,23 +78,12 @@ function clearboard() {
   });
 }
 clearboard();
-const squarePxs = document.querySelectorAll('.pixel');
-const savePixelsBoard = () => {
-  const pxBoard = [];
-  for (let ind = 0; ind < squarePxs.length; ind += 1) {
-    pxBoard.push(squarePxs[ind].style.backgroundColor);
-  }
-};
-
-function painting() {
-  for (let ind = 0; ind < squarePxs.length; ind += 1) {
-    squarePxs[ind].addEventListener('click', savePixelsBoard);
-  }
-}
-painting();
-
 window.onload = () => {
   constroiTituloH1();
   geraCoresAleatorias();
   squarePixel();
+  removeselected();
+  corSelected();
+  pixelToColor();
+  clearboard();
 };
