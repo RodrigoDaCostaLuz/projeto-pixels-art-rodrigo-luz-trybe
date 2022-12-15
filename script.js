@@ -1,6 +1,6 @@
 // Variáveis
 const pixelboard = document.getElementById('pixel-board');
-const coresAleatorias = document.getElementById('color-palette');
+// const coresAleatorias = document.getElementById('color-palette');
 const coresDaPaleta = document.getElementsByClassName('color');
 const btnRandonColor = document.getElementById('button-random-color');
 // Paleta de Cores
@@ -8,11 +8,6 @@ coresDaPaleta[0].style.backgroundColor = 'black';
 coresDaPaleta[1].style.backgroundColor = 'yellow';
 coresDaPaleta[2].style.backgroundColor = 'red';
 coresDaPaleta[3].style.backgroundColor = 'green';
-// Salva paleta com cores aleatórias
-const salvaCoresAletorias = () => {
-  localStorage.setItem('colorPalette', coresAleatorias);
-};
-salvaCoresAletorias();
 // Função gera cores aletórias
 const geraCoresAleatorias = btnRandonColor.addEventListener('click', () => {
   for (let index = 1; index < coresDaPaleta.length; index += 1) {
@@ -36,5 +31,4 @@ constroiQuadroPixel(25);
 window.onload = () => {
   geraCoresAleatorias();
   constroiQuadroPixel();
-  salvaCoresAletorias();
 };
