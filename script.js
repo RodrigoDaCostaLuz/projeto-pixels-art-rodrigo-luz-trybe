@@ -17,8 +17,19 @@ const geraCoresAleatorias = () => {
       const b = Math.floor(Math.random() * 255).toString(10);
       const coresRGB = `rgb(${r},${g},${b})`;
       coresDaPaleta[index].style.backgroundColor = coresRGB;
+      const paletaSalva = [];
+      paletaSalva.push(coresDaPaleta[index].style.backgroundColor);
+      localStorage.setItem('colorPalette', JSON.stringify(paletaSalva));
     }
   });
+};
+// Salvar localStorage
+const savePaletaCollor = () => {
+  const paletaSalva = [];
+  for (let index = 0; index < coresDaPaleta.length; index += 1) {
+    paletaSalva.push(coresDaPaleta[index].style.backgroundColor);
+  }
+  localStorage.setItem('colorPalette', JSON.stringify(paletaSalva));
 };
 // Função constrói quadro de pixels
 const constroiQuadroPixel = (value) => {
@@ -82,4 +93,5 @@ window.onload = () => {
   corSelected();
   pixelToColor();
   clearboard();
+  savePaletaCollor();
 };
