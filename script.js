@@ -19,7 +19,7 @@ const geraCoresAleatorias = () => {
       const coresRGB = `rgb(${r},${g},${b})`;
       coresDaPaleta[index].style.backgroundColor = coresRGB;
 
-      localStorage.setItem('colorPalette', JSON.stringify(coresRGB));
+      localStorage.setItem('colorPalette', coresRGB);
     }
   });
 };
