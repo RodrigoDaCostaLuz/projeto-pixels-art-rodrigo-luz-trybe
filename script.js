@@ -8,6 +8,7 @@ coresDaPaleta[0].style.backgroundColor = 'black';
 coresDaPaleta[1].style.backgroundColor = 'yellow';
 coresDaPaleta[2].style.backgroundColor = 'red';
 coresDaPaleta[3].style.backgroundColor = 'green';
+
 // Função gera cores aletórias
 const geraCoresAleatorias = () => {
   btnRandonColor.addEventListener('click', () => {
@@ -17,17 +18,16 @@ const geraCoresAleatorias = () => {
       const b = Math.floor(Math.random() * 255).toString(10);
       const coresRGB = `rgb(${r},${g},${b})`;
       coresDaPaleta[index].style.backgroundColor = coresRGB;
-      const paletaSalva = [];
-      paletaSalva.push(coresDaPaleta[index].style.backgroundColor);
-      localStorage.setItem('colorPalette', JSON.stringify(paletaSalva));
+
+      localStorage.setItem('colorPalette', JSON.stringify(coresRGB));
     }
   });
 };
-// // Salvar localStorage
+// Salva paleta com cores aleatórias
 // const savePaletaCollor = () => {
 //   const paletaSalva = [];
 //   for (let index = 0; index < coresDaPaleta.length; index += 1) {
-//     paletaSalva.push(coresDaPaleta[index].style.backgroundColor);
+//     paletaSalva.push(coresDaPaleta[index].style.backgroundColor = coresRGB);
 //   }
 //   localStorage.setItem('colorPalette', JSON.stringify(paletaSalva));
 // };
