@@ -23,14 +23,7 @@ const geraCoresAleatorias = () => {
     }
   });
 };
-// Salva paleta com cores aleatórias
-// const savePaletaCollor = () => {
-//   const paletaSalva = [];
-//   for (let index = 0; index < coresDaPaleta.length; index += 1) {
-//     paletaSalva.push(coresDaPaleta[index].style.backgroundColor = coresRGB);
-//   }
-//   localStorage.setItem('colorPalette', JSON.stringify(paletaSalva));
-// };
+
 // Função constrói quadro de pixels
 const constroiQuadroPixel = (value) => {
   for (let index = 1; index <= value; index += 1) {
@@ -93,5 +86,4 @@ window.onload = () => {
   corSelected();
   pixelToColor();
   clearboard();
-  savePaletaCollor();
 };
