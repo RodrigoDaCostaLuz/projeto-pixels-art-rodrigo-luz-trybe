@@ -1,89 +1,73 @@
-// Variáveis
-const pixelboard = document.getElementById('pixel-board');
-// const coresAleatorias = document.getElementById('color-palette');
+// Cores da Paleta
 const coresDaPaleta = document.getElementsByClassName('color');
-const btnRandonColor = document.getElementById('button-random-color');
-// Paleta de Cores pré-definida
 coresDaPaleta[0].style.backgroundColor = 'black';
 coresDaPaleta[1].style.backgroundColor = 'yellow';
 coresDaPaleta[2].style.backgroundColor = 'red';
 coresDaPaleta[3].style.backgroundColor = 'green';
 
-// Função gera cores aletórias
-const geraCoresAleatorias = () => {
-  btnRandonColor.addEventListener('click', () => {
-    for (let index = 1; index < coresDaPaleta.length; index += 1) {
-      const r = Math.floor(Math.random() * 255).toString(10);
-      const g = Math.floor(Math.random() * 255).toString(10);
-      const b = Math.floor(Math.random() * 255).toString(10);
-      const coresRGB = `rgb(${r},${g},${b})`;
-      coresDaPaleta[index].style.backgroundColor = coresRGB;
+// Botão gera paleta com cores aleatórias + salvar em localStorage
+const btnRandom = document.getElementById('button-random-color');
+const saveStatePalette = [];
+btnRandom.addEventListener('click', () => {
+  for (let index = 1; index < coresDaPaleta.length; index += 1) {
+    const r = Math.floor(Math.random() * 255).toString(10);
+    const g = Math.floor(Math.random() * 255).toString(10);
+    const b = Math.floor(Math.random() * 255).toString(10);
+    const coresRGB = `rgb(${r},${g},${b})`;
+    coresDaPaleta[index].style.backgroundColor = coresRGB;
+    saveStatePalette.push(coresRGB);
+  }
+  localStorage.setItem('colorPalette', JSON.stringify(saveStatePalette));
+});
 
-      localStorage.setItem('colorPalette', coresRGB);
+// Função que cria quadrado de pixels
+const pixelBoard = document.getElementById('pixel-board');
+const squarePixel = (value) => {
+  for (let i = 1; i <= value; i += 1) {
+    const pixel = document.createElement('div');
+    pixel.className = 'pixel';
+    pixelBoard.appendChild(pixel);
+  }
+};
+squarePixel(25);
+
+// Adicionar a classe "selected" à cor selecionada
+for (let i = 0; i < coresDaPaleta.length; i += 1) {
+  coresDaPaleta[i].addEventListener('click', () => {
+    for (let j = 0; j < coresDaPaleta.length; j += 1) {
+      coresDaPaleta[j].classList.remove('selected');
     }
+    coresDaPaleta[i].classList.add('selected');
   });
-};
+}
 
-// Função constrói quadro de pixels
-const constroiQuadroPixel = (value) => {
-  for (let index = 1; index <= value; index += 1) {
-    const pixels = document.createElement('pixel');
-    pixels.className = 'pixel';
-    pixelboard.appendChild(pixels);
-  }
-};
-// nomear
-const removeselected = () => {
-  for (let indice = 0; indice < coresDaPaleta.length; indice += 1) {
-    coresDaPaleta[indice].addEventListener('click', (cor) => {
-      coresDaPaleta[0].classList.remove('selected');
-      coresDaPaleta[1].classList.remove('selected');
-      coresDaPaleta[2].classList.remove('selected');
-      coresDaPaleta[3].classList.remove('selected');
-      cor.target.classList.add('selected');
-    });
-  }
-};
-// Funções: seleciona cor aleatoria na paleta e pinta pixels
-const corSelected = () => {
-  for (let index = 0; index < coresDaPaleta.length; index += 1) {
-    coresDaPaleta[index].addEventListener('click', () => {
-      for (let ind = 0; ind < coresDaPaleta.length; ind += 1) {
-        coresDaPaleta[ind].classList.remove('selected');
-      }
-      coresDaPaleta[index].classList.add = 'selected';
-      coresDaPaleta[index].classList.toggle('selected');
-    });
-  }
-};
-function pixelToColor() {
-  const tdPixel = document.querySelectorAll('.pixel');
-
-  for (let index = 0; index < tdPixel.length; index += 1) {
-    tdPixel[index].addEventListener('click', (evento) => {
+// Pintar pixel do quadro com a cor selecionada
+function paintPixel() {
+  const pixels = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].addEventListener('click', (event) => {
       const selectedColor = document.querySelector('.selected');
-      const color = selectedColor.getAttribute('style');
-      // console.log(color);
-      evento.target.setAttribute('style', color);
+      const color = window.getComputedStyle(selectedColor).getPropertyValue('background-color');
+      event.target.style.backgroundColor = color;
     });
   }
 }
-// Função que limpa o quadro de pixels
-function clearboard() {
-  const btnClearBoard = document.getElementById('clear-board');
-  btnClearBoard.addEventListener('click', () => {
-    const tdPixel = document.getElementsByClassName('pixel');
-    for (let index = 0; index < tdPixel.length; index += 1) {
-      tdPixel[index].style.backgroundColor = 'white';
-    }
-  });
+paintPixel();
+
+// Botão para limpar o quadro
+const btnClearBoard = document.getElementById('clear-board');
+btnClearBoard.addEventListener('click', () => {
+  const pixels = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+});
+
+function toggleAudio() {
+  var audio = document.getElementById("myAudio");
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
 }
-// Executa funções
-window.onload = () => {
-  geraCoresAleatorias();
-  constroiQuadroPixel(25);
-  removeselected();
-  corSelected();
-  pixelToColor();
-  clearboard();
-};

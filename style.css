@@ -1,18 +1,56 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 body {
-  text-align: center;
+  background-image: url('images/fundopixelscollors.gif');
+}
+
+#div-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  height: calc(100vh - 220px);
+  margin: 20px;
+  padding: 20px;
+}
+
+header {
+  background-image: linear-gradient(to bottom, #f90303, #0303f9);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 #title {
+  background-color: linear-gradient(to bottom, #fb0202, #0101f8);
+  background-size: 40px 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  border-radius: 20px;
+  font-size: 18px;
+  margin: 0;
+  padding: 10px;
+  background-color: linear-gradient(to bottom, #f80000, #0101f8);
 }
 
 #color-palette {
@@ -20,6 +58,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .color {
@@ -27,9 +66,14 @@ body {
   width: 100px;
   height: 100px;
   position: relative;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin: 5px;
+}
+
+.color:hover {
+  transform: scale(1.1);
 }
 
 .botaos {
@@ -37,47 +81,89 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 #button-random-color {
-  display: inline;
+  display: inline-block;
   cursor: pointer;
-  position: relative;
-  padding: 5px;
-  border-radius: 10px;
-  margin: 0 5px;
+  margin-right: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #f90202, #0303f8);
+  color: #0bbaff;
+  transition: background-color 0.2s ease-in-out;
 }
 
 #clear-board {
-  display: inline;
+  display: inline-block;
   cursor: pointer;
-  position: relative;
-  padding: 5px;
-  border-radius: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #f90202, #0303f8);
+  color: #0bbaff;
+  transition: background-color 0.2s ease-in-out;
 }
 
-#board-size {
-  width: 50px;
-  margin-top: 5px;
+#button-random-color:hover {
+  background-image: linear-gradient(to bottom, #fb0303, #0202f6);
 }
 
-#div-container {
+#clear-board:hover {
+  background-image: linear-gradient(to bottom, #fb0303, #0202f6);
+}
+
+.container-song {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-song {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: none;
+  border-radius: 1px;
+  color: #da1db4;
+  font-size: 12px;
+  width: 100px;
+  height: 20px;
+  text-align: center;
+}
+
+#btn-song:hover {
+  background-color: #47054f;
 }
 
 #pixel-board {
-  margin-top: 10px;
-  margin-left: 10px;
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto auto;
+  margin-top: 30px;
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 45px);
+  gap: 5px;
 }
 
 .pixel {
-  border: black solid 1px;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   background-color: white;
+  cursor: pointer;
+}
+
+.pixel:hover {
+  background-color: #ccc;
+}
+
+footer {
+  background-image: linear-gradient(to bottom, #fe0000, #0000fe);
+  padding: 20px;
+  color: #fdfcfc;
+  text-align: center;
+  margin-top: 20px;
 }

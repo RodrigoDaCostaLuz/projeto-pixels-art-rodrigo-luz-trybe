@@ -2,35 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto Pixels Art</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
   <header>
+    <div class="square">
+      <h2>Colore os pixels abaixo, deixe a aleatoriedade conduzir a experiência e relaxe a mente!</h2>
+    </div>
     <h1 id="title">Paleta de Cores</h1>
   </header>
-  <!--Paleta de Cores-->
   <div id="color-palette">
     <div class="color selected"></div>
     <div class="color"></div>
     <div class="color"></div>
     <div class="color"></div>
   </div>
-  <br />
-  <!--Botãos-->
+
   <div class="botaos">
     <button id="button-random-color">Cores aleatórias</button>
     <button id="clear-board">Limpar</button>
   </div>
-  <br />
-  <!--Quadro Pixels-->
+
+  <div class="container-song">
+    <div class="btn-song">
+      <audio id="myAudio" src="songs/songpxart.wav" autoplay loop></audio>
+      <button id="btn-song" onclick="toggleAudio()">Play/Pause</button>
+    </div>
+  </div>
+
   <div id="div-container">
     <div id="pixel-board"></div>
   </div>
+
+  <footer>projeto-pixel-art. 2022 . Rodrigo Luz - Trybe</footer>
 
   <script src="script.js"></script>
 </body>
