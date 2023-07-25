@@ -7,39 +7,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto Pixels Art</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-  <header>
-    <div class="square">
-      <h2>Colore os pixels abaixo, deixe a aleatoriedade conduzir a experiência e relaxe a mente!</h2>
-    </div>
+  <header class="d-flex justify-content-center" style="padding: 10px;">
     <h1 id="title">Paleta de Cores</h1>
   </header>
-  <div id="color-palette">
-    <div class="color selected"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-    <div class="color"></div>
-  </div>
 
-  <div class="botaos">
-    <button id="button-random-color">Cores aleatórias</button>
-    <button id="clear-board">Limpar</button>
-  </div>
-
-  <div class="container-song">
-    <div class="btn-song">
-      <audio id="myAudio" src="songs/songpxart.wav" autoplay loop></audio>
-      <button id="btn-song" onclick="toggleAudio()">Play/Pause</button>
+  <div id="div-container" class="container mt-3">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div id="color-palette" class="d-flex align-items-center flex-wrap justify-content-center">
+          <div class="color selected"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <div class="d-flex justify-content-center">
+        <button id="button-random-color" class="btn btn-primary mr-2">Cores aleatórias</button>
+        <button id="clear-board" class="btn btn-primary">Limpar</button>
+      </div>
+    </div>
+    <br>
+    <div class="container-song">
+      <div class="btn-song" >
+        <audio id="myAudio" src="songs/songpxart.wav" autoplay loop></audio>
+        <button id="btn-song" class="btn btn-primary" onclick="toggleAudio()">Play/Pause</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <div id="pixel-board" style="grid-template-columns: repeat(10, 1fr);"></div>
+      </div>
     </div>
   </div>
 
-  <div id="div-container">
-    <div id="pixel-board"></div>
-  </div>
-
-  <footer>projeto-pixel-art. 2022 . Rodrigo Luz - Trybe</footer>
+  <footer class="bg-primary text-white text-center mt-3 py-3">projeto-pixel-art. 2022 . Rodrigo Luz - Trybe</footer>
 
   <script src="script.js"></script>
 </body>

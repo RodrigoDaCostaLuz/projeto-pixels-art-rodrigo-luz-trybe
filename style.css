@@ -1,8 +1,8 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 
 body {
   background-image: url('images/fundopixelscollors.gif');
@@ -14,15 +14,13 @@ body {
   justify-content: flex-start;
   align-items: center;
   overflow-y: auto;
-  height: calc(100vh - 220px);
+  /* height: calc(100vh - 220px);
   margin: 20px;
-  padding: 20px;
+  padding: 20px; */
 }
 
 header {
   background-image: linear-gradient(to bottom, #f90303, #0303f9);
-  padding: 20px;
-  margin-bottom: 20px;
 }
 
 #title {
@@ -55,14 +53,12 @@ h2 {
 
 #color-palette {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   margin-bottom: 10px;
 }
 
 .color {
-  display: inline-block;
   width: 100px;
   height: 100px;
   position: relative;
@@ -143,10 +139,11 @@ h2 {
 
 #pixel-board {
   margin-top: 30px;
-  margin-left: 30px;
+  /* margin-left: 30px; Remove essa linha */
   display: grid;
-  grid-template-columns: repeat(5, 45px);
+  grid-template-columns: repeat(10, 1fr); /* Altera o valor para "1fr" */
   gap: 5px;
+  width: 100%; /* Definir a largura do quadro de pixels para ocupar 100% do contêiner pai */
 }
 
 .pixel {

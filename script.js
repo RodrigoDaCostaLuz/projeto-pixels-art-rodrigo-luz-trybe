@@ -29,7 +29,7 @@ const squarePixel = (value) => {
     pixelBoard.appendChild(pixel);
   }
 };
-squarePixel(25);
+squarePixel(50);
 
 // Adicionar a classe "selected" à cor selecionada
 for (let i = 0; i < coresDaPaleta.length; i += 1) {
