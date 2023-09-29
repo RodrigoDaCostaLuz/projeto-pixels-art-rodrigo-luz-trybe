@@ -8,7 +8,6 @@ Para implementar este projeto, foram aplicados conhecimentos em:
 
 - HTML
 - CSS
-- Bootstrap
 - JavaScript
 - Manipulação do DOM
 
